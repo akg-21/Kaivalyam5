@@ -524,59 +524,49 @@ li {
 
 /* Mobile Menu */
 .mobile-menu {
-  position: fixed;
-  top: 0;
+  display: none;
+  position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
-  bottom: 0;
   background-color: var(--color-bg-primary);
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3xl);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity var(--transition-normal),
-              visibility var(--transition-normal);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+  padding: var(--space-md) 0;
 }
 
 .menu-open .mobile-menu {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  display: block;
 }
 
 .mobile-nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
 }
 
 .mobile-nav-item {
-  margin-bottom: var(--space-xl);
-  transform: translateY(20px);
-  opacity: 0;
-  transition: transform var(--transition-normal),
-              opacity var(--transition-normal);
-  transition-delay: calc(var(--item-index) * 0.1s);
+  margin: 0;
+  border-bottom: 1px solid var(--color-bg-tertiary);
 }
 
-.menu-open .mobile-nav-item {
-  transform: translateY(0);
-  opacity: 1;
+.mobile-nav-item:last-child {
+  border-bottom: none;
 }
 
 .mobile-nav-link {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--color-text-primary);
-  transition: color var(--transition-fast);
-  display: inline-block;
-  position: relative;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+}
+
+.mobile-nav-link:hover {
+  color: var(--color-accent-1);
+  background-color: var(--color-bg-secondary);
 }
 
 .mobile-nav-link:hover {
@@ -604,6 +594,7 @@ li {
 .mobile-nav-footer {
   margin-top: var(--space-3xl);
   display: flex;
+  justify-content: center;
   gap: var(--space-md);
 }
 
@@ -613,15 +604,31 @@ li {
   font-size: 1.5rem;
 }
 
+/* Additional mobile fixes */
+@media (max-width: 768px) {
+  .mobile-menu {
+    padding: 100px var(--space-md) var(--space-xl);
+  }
+
+  .mobile-nav-link {
+    font-size: 1.8rem;
+    padding: var(--space-sm) 0;
+  }
+
+  .mobile-nav-item {
+    margin-bottom: var(--space-lg);
+  }
+}
+
 @media (max-width: 992px) {
   .main-nav .nav-list {
     display: none;
   }
-  
+
   .nav-toggle {
     display: block;
   }
-  
+
   .theme-toggle {
     display: none;
   }
