@@ -539,14 +539,13 @@ li {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-normal),
-              visibility var(--transition-normal);
+  transition: all var(--transition-normal);
 }
 
 .menu-open .mobile-menu {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
+  pointer-events: auto;  
 }
 
 .mobile-nav-list {
